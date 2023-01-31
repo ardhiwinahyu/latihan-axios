@@ -1,0 +1,9 @@
+GET http://localhost:3000/users/get
+
+POST http://localhost:3000/users/submit Content-Type: application/json
+
+PUT http://localhost:3000/users/edit Content-Type: application/json
+
+PATCH http://localhost:3000/users/patch Content-Type: application/json
+
+DELETE http://localhost:3000/users/delete
