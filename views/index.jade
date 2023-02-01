@@ -1,5 +1,49 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	p Welcome to #{title}
+	form(action='/users/submit',method='post')
+		input(type='submit',value='POST')
+	form(action='/users/get',method='get')
+		input(type='submit',value='GET')
+
+	form(action='/users/edit/1')
+		input(type='submit',value='PUT', class="put")
+	
+	form(action='/users/delete/1')
+		input(type='submit',value='DELETE', class="delete")
+
+	form(action='/users/patch/1')
+		input(type='submit',value='PATCH', class="patch")
+
+	script.
+		const putBtn = document.querySelector(".put");
+		putBtn.addEventListener("click", (e)=>{
+			
+			fetch("http://localhost:3000/users/edit/1", {
+				method: "PUT",
+				headers: {'Content-type': 'application/json; charset=UTF-8'} ,
+				body: JSON.stringify({ id: 1, title: "foo", body: "bar", userId: 1 })
+				}).then((res) => res.json()).then((res) => console.log(res))
+			})
+		
+
+		const deleteBtn = document.querySelector(".delete");
+		deleteBtn.addEventListener("click", (e)=>{
+			
+			fetch("http://localhost:3000/users/delete/1", {
+				method: "DELETE"
+			}).then((res) => res.json()).then((res) => console.log(res))
+			})
+
+		const patchBtn = document.querySelector(".patch");
+		patchBtn.addEventListener("click", (e)=>{
+			
+			fetch("http://localhost:3000/users/patch/1", {
+				method: "PATCH",
+				headers: {'Content-type': 'application/json; charset=UTF-8'} ,
+				body: JSON.stringify({title: "Ini patch"})
+				}).then((res) => res.json()).then((res) => console.log(res))
+			})
+  

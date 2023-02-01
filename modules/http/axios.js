@@ -14,7 +14,7 @@ const getTodos = () => {
 //post to todo list
 const postTodos = () => {
 	return instance.post("/posts", {
-		title: "fHello helo",
+		title: "Hello helo",
 		userId: 1,
 		body: "bar",
 	});
@@ -22,7 +22,7 @@ const postTodos = () => {
 
 //put to todo list
 const putTodos = (id) => {
-	return instance.put(`/posts/${id}`, { id: 1, title: "foo", body: "bar", userId: 1 });
+	return instance.put("/posts/" + id, { id: 1, title: "foo", body: "bar", userId: 1 });
 };
 
 //patch to to todo list
